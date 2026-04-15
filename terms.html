@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service – LifeROI</title>
+<meta name="description" content="LifeROI Terms of Service. LifeROI provides financial simulations for educational and planning purposes only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --bg:       #0a0a0f;
+  --bg2:      #111118;
+  --bg3:      #16161f;
+  --surface:  #1c1c28;
+  --surf2:    #222232;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #f0eeff;
+  --muted:    #8884aa;
+  --muted2:   #5a5878;
+  --blue:     #6b7fff;
+  --purple:   #a78bfa;
+  --green:    #34d399;
+  --amber:    #fbbf24;
+  --pink:     #f472b6;
+  --syne:     'Syne', sans-serif;
+  --body:     'Instrument Sans', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ─── Noise texture overlay ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+}
+
+/* ─── Top glow ─── */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(107,127,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Nav ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: rgba(10,10,15,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.nav-logo-name {
+  font-family: var(--syne);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.02em;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-back {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--text); }
+.nav-back svg { width: 14px; height: 14px; }
+
+.nav-pill {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted2);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+.nav-pill a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-pill a:hover { color: var(--text); }
+
+/* ─── Layout ─── */
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+.page { padding: 108px 0 120px; }
+
+/* ─── Page Header ─── */
+.page-header {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp .5s ease both;
+}
+
+.page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(107,127,255,0.1);
+  border: 1px solid rgba(107,127,255,0.2);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--blue);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-family: var(--syne);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--text) 0%, var(--muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-meta {
+  font-size: 13px;
+  color: var(--muted2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.meta-sep {
+  width: 3px; height: 3px;
+  background: var(--muted2);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ─── Highlight Box ─── */
+.highlight-box {
+  background: rgba(251,191,36,0.05);
+  border: 1px solid rgba(251,191,36,0.2);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  margin: 32px 0 48px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  animation: fadeUp .5s .08s ease both;
+}
+.highlight-box strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ─── Section headings ─── */
+h2 {
+  font-family: var(--syne);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin: 52px 0 14px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp .4s ease both;
+}
+h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: linear-gradient(to bottom, var(--blue), var(--purple));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+h2:first-of-type { margin-top: 0; }
+
+/* ─── Body copy ─── */
+p {
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-size: 15px;
+}
+p:last-child { margin-bottom: 0; }
+p strong { color: var(--text); font-weight: 500; }
+
+ul {
+  padding-left: 0;
+  margin-bottom: 16px;
+  list-style: none;
+}
+li {
+  color: var(--muted);
+  font-size: 15px;
+  padding: 5px 0 5px 20px;
+  position: relative;
+}
+li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 5px;
+  height: 5px;
+  background: var(--blue);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+li strong { color: var(--text); font-weight: 500; }
+
+a.inline {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(107,127,255,0.3);
+  transition: border-color .2s, color .2s;
+}
+a.inline:hover {
+  color: var(--purple);
+  border-bottom-color: rgba(167,139,250,0.5);
+}
+
+/* ─── Footer ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted2);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+.footer-logo span {
+  font-family: var(--syne);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-links a.active { color: var(--blue); }
+
+.footer-copy {
+  color: var(--muted2);
+  font-size: 12px;
+}
+.footer-copy a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.footer-copy a:hover { color: var(--text); }
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surf2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted2); }
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+  nav { padding: 16px 20px; }
+  .nav-pill { display: none; }
+  .page { padding: 88px 0 96px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">📈</div>
+    <span class="nav-logo-name">LifeROI</span>
+  </a>
+  <div class="nav-right">
+    <a class="nav-back" href="index.html">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to Home
+    </a>
+    <span class="nav-pill"><a href="privacy.html">← Privacy Policy</a></span>
+  </div>
+</nav>
+
+<!-- ── TERMS OF SERVICE ── -->
+<div class="page">
+  <div class="container">
+
+    <div class="page-header">
+      <div class="page-eyebrow">Legal Document</div>
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="page-meta">
+        <span>Effective Date: April 14, 2026</span>
+        <span class="meta-sep"></span>
+        <span>LifeROI: FIRE Calculator</span>
+        <span class="meta-sep"></span>
+        <span>v1.0.0</span>
+      </p>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Important:</strong> LifeROI provides financial simulations for educational and planning purposes only. It does not constitute financial advice. Please consult a qualified financial advisor for personalized guidance.
+    </div>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By downloading, installing, or using LifeROI: FIRE Calculator ("the App"), you agree to be bound by these Terms of Service. If you do not agree, please do not use the App.</p>
+
+    <h2>2. Description of Service</h2>
+    <p>LifeROI is a personal finance planning application that provides:</p>
+    <ul>
+      <li>FIRE (Financial Independence, Retire Early) retirement simulations using Monte Carlo methods</li>
+      <li>Multi-phase financial planning tools</li>
+      <li>Inflation-adjusted savings tracking</li>
+      <li>Memory Dividend journaling features</li>
+      <li>Scenario comparison tools and financial calculators</li>
+    </ul>
+
+    <h2>3. Financial Disclaimer</h2>
+    <p><strong>LifeROI is for simulation and educational purposes only.</strong> The calculations, projections, and results provided by the App are mathematical simulations based on assumptions you enter. They do not constitute financial, investment, tax, or legal advice.</p>
+    <p>Past performance of any investment is not indicative of future results. Monte Carlo simulations and other projections involve significant uncertainty. We strongly recommend consulting a qualified and licensed financial advisor before making any financial decisions.</p>
+
+    <h2>4. Subscriptions &amp; Purchases</h2>
+    <p>LifeROI offers optional paid subscriptions (Monthly, Annual, and Lifetime) that unlock additional features. By purchasing a subscription, you agree to the following:</p>
+    <ul>
+      <li><strong>Monthly and Annual plans</strong> automatically renew unless cancelled at least 24 hours before the end of the current period.</li>
+      <li>Subscriptions can be managed and cancelled in your Apple App Store account settings.</li>
+      <li>No refunds are provided for partial subscription periods, except where required by applicable law.</li>
+      <li>Prices are set in your local App Store currency and may vary by region.</li>
+    </ul>
+    <p>All purchases are processed by Apple through the App Store. Apple's standard terms apply to all transactions.</p>
+
+    <h2>5. Free Tier Limitations</h2>
+    <p>The free tier of LifeROI is limited to 1 non-persistent scenario and 1 Memory Dividend entry. A subscription is required to access additional scenarios and features.</p>
+
+    <h2>6. User Data &amp; Local Storage</h2>
+    <p>All financial data you enter is stored locally on your device. You are solely responsible for backing up your data. We are not liable for data loss resulting from device failure, app deletion, or operating system updates.</p>
+
+    <h2>7. Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Reverse engineer, decompile, or modify the App</li>
+      <li>Use the App for any unlawful purpose</li>
+      <li>Attempt to circumvent subscription or purchase mechanisms</li>
+      <li>Use automated means to access or interact with the App</li>
+    </ul>
+
+    <h2>8. Intellectual Property</h2>
+    <p>LifeROI and all its content, features, and functionality are owned by the developer and are protected by applicable intellectual property laws. You may not copy, distribute, or create derivative works without prior written permission.</p>
+
+    <h2>9. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by applicable law, the developer shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the App, including but not limited to financial losses resulting from decisions made based on the App's simulations or projections.</p>
+
+    <h2>10. Disclaimer of Warranties</h2>
+    <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+
+    <h2>11. Changes to Terms</h2>
+    <p>We reserve the right to modify these Terms at any time. We will notify users of material changes via an in-app notice or by updating the effective date above. Continued use of the App after changes constitutes acceptance of the revised Terms.</p>
+
+    <h2>12. Governing Law</h2>
+    <p>These Terms shall be governed by and construed in accordance with applicable laws. Any disputes shall be resolved in the jurisdiction where the developer is registered.</p>
+
+    <h2>13. Contact</h2>
+    <p>For questions about these Terms, please contact us at: <a class="inline" href="mailto:support@liferoiapp.com">support@liferoiapp.com</a></p>
+
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <a class="footer-logo" href="index.html">
+    <div style="width:28px;height:28px;font-size:14px;background:linear-gradient(135deg,#6b7fff,#a78bfa);border-radius:7px;display:flex;align-items:center;justify-content:center;">📈</div>
+    <span>LifeROI</span>
+  </a>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html" class="active">Terms of Service</a>
+    <a href="mailto:support@liferoiapp.com">support@liferoiapp.com</a>
+  </div>
+  <p class="footer-copy">© 2026 LifeROI · FIRE Calculator</p>
+</footer>
+
+</body>
+</html>
